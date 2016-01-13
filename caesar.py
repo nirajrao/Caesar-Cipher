@@ -19,26 +19,11 @@ class Link:
     """
     empty = ()
 
-    def __init__(self, first, rest=empty):
-        assert rest is Link.empty or isinstance(rest, Link)
+    def __init__(self, first, second=empty):
+        assert second is Link.empty or isinstance(second, Link)
         self.first = first
-        self.rest = rest
+        self.second = second
 
-    def __getitem__(self, i):
-        if i == 0:
-            return self.first
-        else:
-            return self.rest[i-1]
-
-    def __len__(self):
-        return 1 + len(self.rest)
-
-    def __repr__(self):
-        if self.rest:
-            rest_str = ', ' + repr(self.rest)
-        else:
-            rest_str = ''
-        return 'Link({0}{1})'.format(self.first, rest_str)
 
 """
 String to Linked-List Implementation
@@ -57,7 +42,7 @@ def encryptor(link, value):
     if link is Link.empty:
         return
     link.first = chr(ord(link.first) + value)
-    return encryptor(link.rest, value)
+    return encryptor(link.second, value)
 
 """
 Linked-List Implementation to String
@@ -69,7 +54,7 @@ def deconverter(link):
         nonlocal empty_string
         while link is not Link.empty:
             empty_string = empty_string + link.first
-            link = link.rest
+            link = link.second
         return empty_string
     return deconverter_helper(link)
 
@@ -82,14 +67,14 @@ def decryptor(link, value):
     if link is Link.empty:
         return
     link.first = chr(ord(link.first) - value)
-    return decryptor(link.rest, value)
+    return decryptor(link.second, value)
 
 """
 Caesar-Cypher Program
 """
 
 
-string = str(input('Enter your message:').replace(' ', ''))
+string = str(input('Enter your message:')).replace(' ', '')
 value = int(input('Enter the value you want to shift by:'))
 
 
@@ -105,7 +90,6 @@ def caesar_cypher(string, value):
 
     
 caesar_cypher(string, value)
-
 
 
 

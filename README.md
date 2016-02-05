@@ -1,11 +1,11 @@
 # Caesar-Cypher
-An implementation of the Caesar-Cypher Algorithm in Python!
+An implementation of the Caesar-Cipher Algorithm in Python!
 
 ###
 Running the Algorithm
 ###
 
-In order to run the Caesar-Cypher program:
+In order to run the Caesar-Cipher program:
 
   1) CD into the directory containing the Python file in Terminal.
   
